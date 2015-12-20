@@ -23,3 +23,6 @@ howto:
 
 (TESTERS NEEDED)
 -Debian 64 bit wheezy tested
+
+Tested on OpenSuSe 13.2 with Nagios Core 4.0.8 and OwnCloud 8.2
+
