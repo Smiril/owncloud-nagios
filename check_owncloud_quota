@@ -21,11 +21,11 @@ else
                 WARN=`echo $max*0.7|bc|cut -d "." -f1`
 
                         if  [ $used -gt $WARN ] ; then
-                                echo "MB used: ${used} allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
+                                echo "used: ${used} MB of allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
                                 exit $STATE_WARNING
 
                         elif [ $used -lt $WARN ] ; then
-                                echo "MB used: ${used} allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
+                                echo "used: ${used} MB of allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
                                 exit $STATE_OK
                         else
                                 echo "UNKNOWN" $check
