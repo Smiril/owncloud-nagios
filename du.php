@@ -1,10 +1,11 @@
 <?php
-$sizeuser = "1024"; // in Gigabyte storage size
+$sizeuser = "1048576"; // in Megabyte storage size
 $username = "user";
 $password = "pwd";
 $hostname = "localhost"; 
 $database = "owncloud";
 $location = "/srv/www/owncloud/data/"; //Change this to the location where userdirs are located on your owncloud linux server
+
 function formatBytes($size1, $decimals = 0){
     $unit = array(
         '0' => 'Byte',
