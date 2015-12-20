@@ -53,7 +53,7 @@ else {
         $maxquot = $sizeuser ; 
 }
 //print username, current usage in bytes, and the max available space in bytes
-echo $allus."-".formatBytes($sizecurb, 3)."-".$maxquot."";
+echo $allus."-".formatBytes($sizecurb, 4)."-".$maxquot."";
 }
 //close the connection
 mysql_close($dbhandle);
