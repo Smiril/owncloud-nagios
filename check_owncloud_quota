@@ -17,15 +17,15 @@ if [ ! -n "$1" ];then
 else
                 gather="`cat /tmp/quota|grep -w -i $1 `"
                 used=`echo $gather|tr -d . | cut -d "-" -f2`
-                max="`echo $gather|cut -d \"-\" -f3`"
+                max=`echo $gather|tr -d . |cut -d "-" -f3`
                 WARN=`echo $max*0.7|bc|cut -d "." -f1`
 
                         if  [ $used -gt $WARN ] ; then
-                                echo "MB used: ${used} allowed: $max GB|MB=${used};;$max GB;; & 'total GB'=$max;;;;"
+                                echo "MB used: ${used} allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
                                 exit $STATE_WARNING
 
                         elif [ $used -lt $WARN ] ; then
-                                echo "MB used: ${used} allowed: $max GB|MB=${used};;$max GB;; & 'total GB'=$max;;;;"
+                                echo "MB used: ${used} allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
                                 exit $STATE_OK
                         else
                                 echo "UNKNOWN" $check
