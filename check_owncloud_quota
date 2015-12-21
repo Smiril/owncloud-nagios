@@ -9,23 +9,27 @@ function help () {
         echo " "
         echo ""
         echo "example usage:"
-        echo "check_owncloud_quota username"
+        echo "check_owncloud_quota!/tmp/quota"
 }
 
-if [ ! -n "$1" ];then
+ARGV=$@
+ARGC=$#
+if [[ $1 == "--help" ]];then
+        help
+elif [[ $1 == "-h" ]];then
         help
 else
-                gather="`cat /tmp/quota|grep -w -i $1 `"
-                used=`echo $gather|tr -d . | cut -d "-" -f2`
+                gather="`cat $1|grep -w -i $1 `"
+                used=`echo $gather| cut -d "-" -f2`
                 max=`echo $gather|cut -d "-" -f3`
                 WARN=`echo $max*0.7|bc|cut -d "." -f1`
 
                         if  [ $used -gt $WARN ] ; then
-                                echo "used: ${used} MB of allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
+                                echo "used: ${used} B of allowed: $max B|B=${used};;$max B;; & 'total B'=$max;;;;"
                                 exit $STATE_WARNING
 
                         elif [ $used -lt $WARN ] ; then
-                                echo "used: ${used} MB of allowed: $max MB|MB=${used};;$max MB;; & 'total MB'=$max;;;;"
+                                echo "used: ${used} B of allowed: $max B|B=${used};;$max B;; & 'total B'=$max;;;;"
                                 exit $STATE_OK
                         else
                                 echo "UNKNOWN" $check
