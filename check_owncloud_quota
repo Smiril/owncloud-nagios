@@ -19,7 +19,7 @@ if [[ $1 == "--help" ]];then
 elif [[ $1 == "-h" ]];then
         help
 else
-                gather="`cat $1|grep -w -i $1 `"
+                gather=`cat $1`
                 used=`echo $gather| cut -d "-" -f2`
                 max=`echo $gather|cut -d "-" -f3`
                 WARN=`echo $max*0.7|bc|cut -d "." -f1`
